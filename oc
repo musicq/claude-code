@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+case "${1:-gpt}" in
+  minimax)
+    shift
+    ANTHROPIC_BASE_URL=http://127.0.0.1:18930 ANTHROPIC_API_KEY=unused ANTHROPIC_MODEL=Minimax-M2.7 claude "$@"
+    ;;
+  gpt)
+    shift
+    ANTHROPIC_BASE_URL=http://127.0.0.1:18930 ANTHROPIC_API_KEY=unused ANTHROPIC_MODEL=gpt-5.4-2026-03-05 claude "$@"
+    ;;
+  claude)
+    shift
+    claude "$@"
+    ;;
+  *)
+    ANTHROPIC_BASE_URL=http://127.0.0.1:18930 ANTHROPIC_API_KEY=unused ANTHROPIC_MODEL=gpt-5.4-2026-03-05 claude "$@"
+    ;;
+esac
